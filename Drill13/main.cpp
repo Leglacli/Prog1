@@ -1,5 +1,5 @@
 /* 
-g++ main.cpp Graph.cpp Window.cpp GUI.cpp Simple_window.cpp -o main `fltk-config --ldflags --use-images`
+g++ main.cpp Graph.cpp Window.cpp GUI.cpp Simple_window.cpp -w -o main `fltk-config --ldflags --use-images`
 */
 
 #include "Graph.h"
@@ -48,8 +48,6 @@ int main()
 	win.attach(wsb);
 	int dy = 100;
 	int dx = -700;
-	bool keep_moving = true;
-	int j = 0;
 
 	for (int i=1;i<=8;i++)
 		for(int j=1;j<=8;j++)
