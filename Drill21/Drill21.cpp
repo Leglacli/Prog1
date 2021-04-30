@@ -29,6 +29,13 @@ struct Map_sum {
     }
 };
 
+template<typename T>
+struct Less_than {
+    T v;
+    Less_than(T val) : v(val) { }
+    bool operator()(T x) const { return x < v; }
+};
+
 struct Item {
     std::string name;
     int iid;
@@ -304,6 +311,23 @@ int main()
     std::cout << "Vd reversed: " << std::endl;
     print(vd.begin(), vd.end());
     std::cout << std::endl;
+
+    //3.8
+    double vd_mean = vd_sum / vd.size();
+    std::cout << "The mean value of the elements in vd is: " << vd_mean << std::endl;
+
+    //3.9
+    std::vector<double> vd2(vd.size());
+    copy_if(vd.begin(), vd.end(), vd2.begin(), Less_than<double>(vd_mean));
+    std::cout << "Contents of vd2: " << std::endl;
+    print(vd2.begin(), vd2.end());
+    std::cout << std::endl;
+
+    //3.10
+    sort(vd.begin(), vd.end());
+    std::cout << "Vd sorted: " << std::endl;
+    print(vd.begin(), vd.end());
+
 
     return 0;
 }
